@@ -5,4 +5,8 @@ from django.shortcuts import render, redirect
 
 def index(request):
 
-    return render(request,)
+    return render(request,"crawlings/index.html")
+
+def delete_comment(request):
+
+    return 
