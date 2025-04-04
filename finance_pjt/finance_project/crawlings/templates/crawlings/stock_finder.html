@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>주식 댓글 분석기</title>
+</head>
+<body>
+    <div style="border: 1px solid #333; padding: 20px; width: 400px; margin: 0 auto;">
+        <p style="color: gray; margin: 0;">주식에 대한, 투자자들의 목소리</p>
+        <h1 style="margin-top: 5px;">주식 댓글 분석기</h1>
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>회사 이름을 입력하세요: </label>
+            <input type="text" name="firm" value="{{ firm }}" required>
+            <button type="submit">검색</button>
+        </form>
+
+        {% if stock_code %}
+            <h3 style="margin-top: 20px;">{{ firm }} ({{ stock_code }})</h3>
+        {% endif %}
+
+        {% if comments %}
+            <p><strong>수집된 댓글:</strong></p>
+            <ul>
+                {% for comment in comments %}
+                    <li>{{ comment }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
